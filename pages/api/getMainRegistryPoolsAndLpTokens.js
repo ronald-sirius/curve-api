@@ -26,6 +26,8 @@ export default fn(async ({ blockchainId } = {}) => {
       lpTokenAddress: (
         // Hardcode the ethereum 3crv token because its pool doesn't have an lp_token method
         (blockchainId === 'ethereum' && address.toLowerCase() === '0xbebc44782c7db0a1a60cb6fe97d0b483032ff1c7') ? '0x6c3f90f043a72fa612cbac8115ee7e52bde6e490' :
+        // Hardcode the ethereum renbtc token because its pool doesn't have an lp_token method
+        (blockchainId === 'ethereum' && address.toLowerCase() === '0x7fc77b5c7614e1533320ea6ddc2eb61fa00a9714') ? '0x075b1bb99792c9e1041ba13afef80c91a1e70fb3' :
         lpTokenAddresses[i] === ZERO_ADDRESS ? address :
         lpTokenAddresses[i]
       ),

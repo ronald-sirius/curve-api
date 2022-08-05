@@ -25,7 +25,9 @@ const deriveMissingCoinPricesSinglePass = async ({
   poolInfo,
   otherPools,
   internalPoolPrices,
+  mainRegistryLpTokensPricesMap,
 }) => {
+  console.log('pool id', poolInfo.id);
   /**
    * Method 1: A coin's price is unknown, another one is known. Use the known price,
    * alongside the price oracle, to derive the other coin's price. Alternatively, use
@@ -171,6 +173,34 @@ const deriveMissingCoinPricesSinglePass = async ({
     }
   }
 
+  /**
+   * Method 5: Same as method 4, with base pools lp token prices instead coins prices.
+   */
+  const canUseMainPoolBaseLpTokenPrice = coins.some(({ address, usdPrice }) => (
+    usdPrice === null &&
+    mainRegistryLpTokensPricesMap[address.toLowerCase()]
+  ));
+  if (poolInfo.id === '26') {
+    console.log({
+      canUseMainPoolBaseLpTokenPrice,
+      coins,
+      mainRegistryLpTokensPricesMap,
+    })
+  }
+
+  if (canUseMainPoolBaseLpTokenPrice) {
+    if (IS_DEV) console.log('Missing coin price: using method 5 to derive price');
+
+    return (
+      coins.map((coin) => (
+        coin.usdPrice === null ? {
+          ...coin,
+          usdPrice: (mainRegistryLpTokensPricesMap[coin.address.toLowerCase()] || null),
+        } : coin
+      ))
+    );
+  }
+
   return coins;
 };
 
@@ -181,6 +211,7 @@ const deriveMissingCoinPrices = async ({
   poolInfo,
   otherPools,
   internalPoolPrices,
+  mainRegistryLpTokensPricesMap,
 }) => {
   let iteration = 0;
   let augmentedCoins = coins;
@@ -199,6 +230,7 @@ const deriveMissingCoinPrices = async ({
       poolInfo,
       otherPools,
       internalPoolPrices,
+      mainRegistryLpTokensPricesMap,
     });
   }
 

@@ -1,3 +1,5 @@
+// THESE ARE THE ONLY THINGS FETCHED FROM COINGECKO ANYMORE
+
 /**
  * On most chains we can retrieve coin prices from their token address straight from
  * coingecko, and for the few token addresses unknown to coingecko on this chain, derive
@@ -12,14 +14,26 @@
 
 export default {
   ethereum: {
+    '0x6b175474e89094c44da98b954eedeac495271d0f': 'dai', // DAI
+    '0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48': 'usd-coin', // USDC
+    '0xdac17f958d2ee523a2206206994597c13d831ec7': 'tether', // USDT
+    '0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee': 'ethereum', // Native ETH
+    '0x2260fac5e5542a773aa44fbcfedf7c193bc2c599': 'wrapped-bitcoin', // wBTC
     '0xc2cb1040220768554cf699b0d863a3cd4324ce32': 'dai', // yDAI
     '0x26ea744e5b887e5205727f55dfbe8685e3b21951': 'usd-coin', // yUSDC
     '0xe6354ed5bc4b393a5aad09f21c46e101e692d447': 'tether', // yUSDT
     '0x04bc0ab673d88ae9dbc9da2380cb6b79c4bca9ae': 'binance-usd', // yBUSD
-    '0x16de59092dae5ccf4a1e6439d611fd0653f0bd01': 'dai', // ycDAI
+    '0x16de59092dae5ccf4a1e6439d611fd0653f0bd01': 'dai', // yDAI
+    '0x8e870d67f660d95d5be530380d0ec0bd388289e1': 'paxos-standard', // USDP
     '0xd6ad7a6750a7593e092a9b218d66c0a814a3436e': 'usd-coin', // ycUSDC
     '0x83f798e925bcd4017eb265844fddabb448f1707d': 'tether', // ycUSDT
     '0x8cb24ed2e4f7e2065f4eb2be5f6b0064b1919850': 'south-african-tether', // ZARP
+    '0x028171bca77440897b824ca71d1c56cac55b68a3': 'aave-dai', // aDAI
+    '0xBcca60bB61934080951369a648Fb03DF4F96263C': 'aave-usdc', // aUSDC
+    '0x3Ed3B47Dd13EC9a98b44e6204A523E766B225811': 'aave-usdt', // aUSDT
+    '0x5d3a536E4D6DbD6114cc1Ead35777bAB948E3643': 'cdai', // cDAI
+    '0xD71eCFF9342A5Ced620049e616c5035F1dB98620': 'seur', // sEUR
+    '0x514910771AF9Ca656af840dff83E8264EcF986CA': 'chainlink', // LINK
   },
   polygon: {
     '0xdab529f40e671a1d4bf91361c21bf9f0c9712ab7': 'binance-usd',
@@ -47,15 +61,29 @@ export default {
     '0x115d8bf0a53e751f8a472f88d587944ec1c8ca6d': 'ptokens-btc',
   },
   avalanche: {
-    '0x47afa96cdc9fab46904a55a6ad4bf6660b53c38a': 'dai',
-    '0x46a51127c3ce23fb7ab1de06226147f446e4a857': 'usd-coin',
-    '0x532e6537fea298397212f09a61e03311686f548e': 'tether',
-    '0x686bef2417b6dc32c50a3cbfbcc3bb60e1e9a15d': 'wrapped-bitcoin',
+    '0xd586e7f844cea2f87f50152665bcbc2c279d8d70': 'dai', // DAI
+    '0xb97ef9ef8734c71904d8002f8b6bc66dd9c48a6e': 'usd-coin', // USDC
+    '0x9702230A8Ea53601f5cD2dc00fDBc13d4dF4A8c7': 'tether', // USDT
+    '0x47afa96cdc9fab46904a55a6ad4bf6660b53c38a': 'dai', // avDAI
+    '0x82E64f49Ed5EC1bC6e43DAD4FC8Af9bb3A2312EE': 'dai', // aAvaDAI
+    '0x46a51127c3ce23fb7ab1de06226147f446e4a857': 'usd-coin', // avUSDC
+    '0x625E7708f30cA75bfd92586e17077590C60eb4cD': 'usd-coin', // aAvaUSDC
+    '0xA7D7079b0FEaD91F3e65f86E8915Cb59c1a4C664': 'usd-coin', // USDC.e
+    '0x532e6537fea298397212f09a61e03311686f548e': 'tether', // avUSDT
+    '0x6ab707Aca953eDAeFBc4fD23bA73294241490620': 'tether', // aAvaUSDT
+    '0xc7198437980c041c805A1EDcbA50c1Ce5db95118': 'tether', // USDT.e
+    '0x686bef2417b6dc32c50a3cbfbcc3bb60e1e9a15d': 'wrapped-bitcoin', // avWBTC
     '0xdbf31df14b66535af65aac99c32e9ea844e14501': 'renbtc',
-    '0x53f7c5869a859f0aec3d334ee8b4cf01e3492f21': 'weth',
+    '0x53f7c5869a859f0aec3d334ee8b4cf01e3492f21': 'weth', // avWETH
+    '0x49D5c2BdFfac6CE2BFdB6640F4F80f226bc10bAB': 'weth', // WETH.e
     '0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee': 'avalanche-2',
     '0x6807ed4369d9399847f306d7d835538915fa749d': 'dai', // bDAI
+    // '0x1337BedC9D22ecbe766dF105c9623922A27963EC': 'dai', // bDAI
     '0xc53a6eda2c847ce9f10b5c8d51bc2a9ed2fe3d44': 'avalanche-2', // u.AVAX
+    '0x264c1383EA520f73dd837F915ef3a732e204a493': 'binancecoin', // BNB
+    '0xB31f66AA3C1e785363F0875A1B74E27b85FD66c7': 'wrapped-avax', // WAVAX
+    '0x6feFd97F328342a8A840546A55FDcfEe7542F9A8': 'ageur', // agEUR
+    '0x9fB1d52596c44603198fB0aee434fac3a679f702': 'jarvis-synthetic-euro', // jEUR
   },
   fantom: {
     '0x8d11ec38a3eb5e956b052f67da8bdc9bef8abf3e': 'dai', // DAI
