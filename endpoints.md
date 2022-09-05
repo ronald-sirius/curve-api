@@ -10,7 +10,7 @@
 
 ## List of Endpoints
 
-**Base is always: https://api.curve.fi/**
+**Base is always: https://api.sirius.finance/**
 
 Last generation time of an endpoint can be found in the `generatedTimeMs` property.
 
